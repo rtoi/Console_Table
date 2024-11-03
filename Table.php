@@ -498,8 +498,7 @@ class Console_Table
         }
 
         $this->addSeparator();
-
-        $totals = array();
+        $totals = array_fill_keys(array_values($this->_calculateTotals), 0);
         foreach ($this->_data as $row) {
             if (is_array($row)) {
                 foreach ($this->_calculateTotals as $columnID) {
@@ -507,7 +506,6 @@ class Console_Table
                 }
             }
         }
-
         $this->_data[] = $totals;
         $this->_updateRowsCols();
     }
